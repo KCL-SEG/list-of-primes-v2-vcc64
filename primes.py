@@ -8,21 +8,21 @@ def primes(number_of_primes):
     if number_of_primes < 1:
         raise ValueError
 
-    lastPrimeNumber = 0
+    lastPrimeNumber = 1
     
     for i in range(number_of_primes):
-        currentNumber = lastPrimeNumber
+        currentNumber = lastPrimeNumber + 1
         currentNumberIsPrime = False
 
         while (not currentNumberIsPrime):
-            for j in range(currentNumber):
-                if (currentNumber % j == 0):
+            for j in range(2,currentNumber+1):
+                if (currentNumber % j == 0 and not j == currentNumber):
                     currentNumber += 1
                     break
-                if (j == currentNumber-1):
+                elif (j == currentNumber):
                     currentNumberIsPrime = True
-                    
+
         lastPrimeNumber = currentNumber
-        list[i] = currentNumber
+        list.append(currentNumber)
 
     return list
